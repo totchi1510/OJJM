@@ -16,6 +16,23 @@ const History: React.FC = () => {
         loadHistory();
     }, []);
 
+    const getWeatherImage = (weather: string) => {
+        const weatherMap: { [key: string]: string } = {
+            "Sunny": "sunny.png",
+            "Clear": "sunny.png",
+            "Cloudy": "cloudy.png",
+            "Partly Cloudy": "cloudy.png",
+            "Overcast": "cloudy.png",
+            "Rain": "rainy.png",
+            "Showers": "rainy.png",
+            "Thunderstorm": "storm.png",
+            "Snow": "snowy.png"
+        };
+
+        // マッピングにない場合は "unknown.png" を返す
+        return `/images/${weatherMap[weather] || "unknown.png"}`;
+    };
+
     return (
         <div className="container mx-auto p-4">
             <h1 className="text-xl font-bold mb-4">運転履歴</h1>
