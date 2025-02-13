@@ -4,12 +4,14 @@ const urlsToCache = [
     "/index.html",
     "/manifest.json",
     "/service-worker.js",
-    "/src/App.tsx",
-    "/src/pages/History.tsx",
-    "/src/api/history.ts",
-    "/src/index.tsx",
-    "/public/index.html"
+    "/icons/icon-192x192.png",
+    "/icons/icon-512x512.png",
+    "/images/background.png",
+    "/images/logo.png",
+    "/images/sunny.png",
+    "/images/cloudy.png"
 ];
+
 
 // Service Worker のインストール時にキャッシュを作成
 self.addEventListener("install", (event) => {
