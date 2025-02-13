@@ -29,4 +29,3 @@ async function fetchWeatherData() {
 }
 
 document.addEventListener("DOMContentLoaded", fetchWeatherData);
-
