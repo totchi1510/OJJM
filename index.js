@@ -1,8 +1,8 @@
-import { fetchHistoryData } from "./api/history.js"; // history.ts をインポート
+import { fetchHistoryData } from "./api/history.js"; // history.ts を import
 
 async function fetchWeatherData() {
     try {
-        // history.ts から直接データを取得
+        // データ取得
         const data = await fetchHistoryData();
 
         if (!data || data.length === 0) {
@@ -11,6 +11,7 @@ async function fetchWeatherData() {
 
         const latestEntry = data[0];
 
+        // UIに反映
         document.getElementById("weather").innerHTML = `
             <p><strong>${latestEntry.date}</strong></p>
             <p>天気: ${latestEntry.weather}</p>
@@ -20,7 +21,6 @@ async function fetchWeatherData() {
 
     } catch (error) {
         console.error("データ取得エラー:", error);
-
         document.getElementById("weather").innerHTML = `
             <p style="color: red;">データ取得に失敗しました</p>
             <p>${error.message}</p>
@@ -29,3 +29,4 @@ async function fetchWeatherData() {
 }
 
 document.addEventListener("DOMContentLoaded", fetchWeatherData);
+
