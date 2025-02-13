@@ -1,1 +1,12 @@
-a
+# Node.js / React 関連
+node_modules/
+dist/
+build/
+.cache/
+.env
+.vscode/
+.idea/
+
+# macOS / Windows 不要ファイル
+.DS_Store
+Thumbs.db
