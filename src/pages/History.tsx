@@ -23,10 +23,6 @@ const History: React.FC = () => {
             "Cloudy": "cloudy.png",
             "Partly Cloudy": "cloudy.png",
             "Overcast": "cloudy.png",
-            "Rain": "rainy.png",
-            "Showers": "rainy.png",
-            "Thunderstorm": "storm.png",
-            "Snow": "snowy.png"
         };
 
         // マッピングにない場合は "unknown.png" を返す
