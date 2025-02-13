@@ -4,19 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
-    <link rel="manifest" href="public/manifest.json">
+
+    <!-- PWA 設定 -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="description" content="A Progressive Web App for Weather and Driving History.">
+
+    <!-- スタイル -->
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
             margin-top: 50px;
-            background-image: url("public/images/background.png"); 
+            background-image: url("/images/background.png"); 
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
         }
         #weather {
-            font-size: 2em;
+            font-size: 1.5em;
             margin-top: 20px;
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 15px;
+            border-radius: 10px;
+            display: inline-block;
         }
         .logo {
             width: 150px;
@@ -26,13 +38,26 @@
     </style>
 </head>
 <body>
-   
-    <img src="public/images/background.png" alt="App Logo" class="logo">
+
+    <!-- ロゴ -->
+    <img src="/images/background.png" alt="App Logo" class="logo">
 
     <h1>Current Weather</h1>
     <div id="weather">Loading...</div>
 
-    <script src="index.js"></script>
+    <!-- Service Worker の登録 -->
+    <script>
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", function () {
+                navigator.serviceWorker.register("/service-worker.js")
+                    .then(reg => console.log("Service Worker registered!", reg))
+                    .catch(err => console.log("Service Worker registration failed", err));
+            });
+        }
+    </script>
+
+    <!-- データ取得スクリプト -->
+    <script src="/index.js"></script>
+
 </body>
 </html>
-
