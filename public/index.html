@@ -6,13 +6,33 @@
     <title>Weather App</title>
     <link rel="manifest" href="manifest.json">
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
-        #weather { font-size: 2em; margin-top: 20px; }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background-image: url("/images/background.png"); /* 背景画像を追加 */
+            background-size: cover;
+            background-position: center;
+        }
+        #weather {
+            font-size: 2em;
+            margin-top: 20px;
+        }
+        .logo {
+            width: 150px;
+            height: auto;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
+    <!-- ロゴ画像を追加 -->
+    <img src="/images/logo.png" alt="App Logo" class="logo">
+
     <h1>Current Weather</h1>
     <div id="weather">Loading...</div>
+
     <script src="app.js"></script>
 </body>
 </html>
+
