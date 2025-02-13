@@ -1,4 +1,4 @@
-import { fetchHistoryData } from "./api/history.js"; // history.ts を import
+import { fetchHistoryData } from "./api/history.js"; // history.js を import
 
 async function fetchWeatherData() {
     try {
