@@ -19,15 +19,15 @@ const History: React.FC = () => {
 
     const getWeatherImage = (weather: string) => {
         const weatherMap: { [key: string]: string } = {
-            "Sunny": "sunny.png",
-            "Clear": "sunny.png",
-            "Cloudy": "cloudy.png",
-            "Partly Cloudy": "cloudy.png",
-            "Overcast": "cloudy.png",
+            "Sunny": "/public/images/sunny.png",
+            "Clear": "/public/images/sunny.png",
+            "Cloudy": "/public/images/cloudy.png",
+            "Partly Cloudy": "/public/images/cloudy.png",
+            "Overcast": "/public/images/cloudy.png",
         };
 
         // マッピングにない場合は "unknown.png" を返す
-        return `/images/${weatherMap[weather] || "unknown.png"}`;
+        return `/public/images/${weatherMap[weather] || "unknown.png"}`;
     };
 
     return (
