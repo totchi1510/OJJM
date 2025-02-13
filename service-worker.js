@@ -4,12 +4,12 @@ const urlsToCache = [
     "/index.html",
     "/manifest.json",
     "/service-worker.js",
-    "/icons/icon-192x192.png",
-    "/icons/icon-512x512.png",
-    "/images/background.png",
-    "/images/logo.png",
-    "/images/sunny.png",
-    "/images/cloudy.png"
+    "/public/icons/icon-192x192.png",
+    "/public/icons/icon-512x512.png",
+    "/public/images/background.png",
+    "/public/images/logo.png",
+    "/public/images/sunny.png",
+    "/public/images/cloudy.png"
 ];
 
 
