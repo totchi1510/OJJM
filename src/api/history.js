@@ -1,5 +1,4 @@
-export async function fetchHistoryData() {
-    // API は存在しないため、ダミーデータを直接返す
+export function fetchHistoryData() {
     return [
         {
             id: 1,
@@ -23,4 +22,3 @@ export async function fetchHistoryData() {
         }
     ];
 }
-
