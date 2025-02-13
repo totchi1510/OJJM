@@ -2,7 +2,7 @@ const CACHE_NAME = "weather-pwa-v1";
 const urlsToCache = [
     "/",
     "/index.html",
-    "/manifest.json",
+    "public/manifest.json",
     "/service-worker.js",
     "/public/icons/icon-192x192.png",
     "/public/icons/icon-512x512.png",
