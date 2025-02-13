@@ -8,6 +8,7 @@ const History: React.FC = () => {
         async function loadHistory() {
             try {
                 const data = await fetchHistoryData();
+                console.log("Fetched data:", data);  // ✅ デバッグ用
                 setHistory(data);
             } catch (error) {
                 console.error("Error fetching history:", error);
