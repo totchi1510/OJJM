@@ -1,4 +1,4 @@
-const CACHE_NAME = "weather-pwa-v1";
+const CACHE_NAME = "weather-pwa-v2"; // Updated cache version
 const urlsToCache = [
     "/",
     "/index.html",
@@ -13,27 +13,41 @@ const urlsToCache = [
     "/images/cloudy.png"
 ];
 
-
-// Service Worker のインストール時にキャッシュを作成
+// Service Worker Installation
 self.addEventListener("install", (event) => {
     event.waitUntil(
-        caches.open(CACHE_NAME).then((cache) => {
-            console.log("Opened cache");
-            return cache.addAll(urlsToCache);
-        })
+        caches.open(CACHE_NAME)
+            .then((cache) => {
+                console.log("Opened cache");
+                return cache.addAll(urlsToCache);
+            })
+            .catch((error) => {
+                console.error("Cache addAll failed:", error);
+            })
     );
+    self.skipWaiting(); // Activate the new service worker immediately
 });
 
-// ネットワークがない場合はキャッシュから取得
+// Fetch Handler: Network-first, fallback to cache
 self.addEventListener("fetch", (event) => {
     event.respondWith(
-        caches.match(event.request).then((response) => {
-            return response || fetch(event.request);
-        })
+        fetch(event.request)
+            .then((response) => {
+                if (!response || response.status !== 200 || response.type !== "basic") {
+                    return response;
+                }
+                // Clone response & store in cache
+                let responseClone = response.clone();
+                caches.open(CACHE_NAME).then((cache) => {
+                    cache.put(event.request, responseClone);
+                });
+                return response;
+            })
+            .catch(() => caches.match(event.request)) // Fallback to cache
     );
 });
 
-// 古いキャッシュを削除（更新時に実行）
+// Activate: Delete old caches
 self.addEventListener("activate", (event) => {
     event.waitUntil(
         caches.keys().then((cacheNames) => {
@@ -47,4 +61,6 @@ self.addEventListener("activate", (event) => {
             );
         })
     );
+    self.clients.claim(); // Take control of all pages immediately
 });
+
